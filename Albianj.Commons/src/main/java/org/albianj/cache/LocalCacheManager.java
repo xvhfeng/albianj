@@ -3,9 +3,7 @@ package org.albianj.cache;
 import java.util.HashMap;
 import java.util.Map;
 
-
-public class LocalCacheManager
-{
+public class LocalCacheManager {
 	@SuppressWarnings("rawtypes")
 	private static Map caches = new HashMap();
 	private static int maxLifetime = 300;
@@ -34,18 +32,17 @@ public class LocalCacheManager
 	 * @param defaultMaxCacheSize
 	 *            the default max size the cache can grow to, in bytes.
 	 */
-	public static void initializeCache(String name, int defaultMaxCacheSize)
-	{
-		initializeCache(name,defaultMaxCacheSize,maxLifetime);
+	public static void initializeCache(String name, int defaultMaxCacheSize) {
+		initializeCache(name, defaultMaxCacheSize, maxLifetime);
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static void initializeCache(String name, int defaultMaxCacheSize,int defaultSecond)
-	{
+	public static void initializeCache(String name, int defaultMaxCacheSize,
+			int defaultSecond) {
 		LocalCache cache = (LocalCache) caches.get(name);
-		if (cache == null)
-		{
-			caches.put(name, new LocalCache(name, defaultMaxCacheSize, defaultSecond * 1000));
+		if (cache == null) {
+			caches.put(name, new LocalCache(name, defaultMaxCacheSize,
+					defaultSecond * 1000));
 		}
 	}
 
@@ -57,8 +54,7 @@ public class LocalCacheManager
 	 * @return the cache found, or null if no cache by that name has been
 	 *         initialized.
 	 */
-	public static ILocalCached getCache(String name)
-	{
+	public static ILocalCached getCache(String name) {
 		return (ILocalCached) caches.get(name);
 	}
 

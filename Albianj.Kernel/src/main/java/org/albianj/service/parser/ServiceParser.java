@@ -11,62 +11,57 @@ import org.albianj.verify.Validate;
 import org.albianj.xml.XmlParser;
 import org.dom4j.Element;
 
-public class ServiceParser extends FreeServiceParser
-{
+public class ServiceParser extends FreeServiceParser {
 
 	private final static String ID_ATTRBUITE_NAME = "Id";
 	private final static String TYPE_ATTRBUITE_NAME = "Type";
 
 	@Override
-	public void loading()
-	{
+	public void loading() {
 		super.init();
 		super.loading();
 	}
 
 	@Override
 	protected Map<String, IAlbianServiceAttribute> parserServices(
-			@SuppressWarnings("rawtypes") List nodes)
-	{
-		if (Validate.isNullOrEmpty(nodes))
-		{
-			String msg = "nodes is null or size is 0";
-			AlbianLoggerService.error(msg);
-			throw new IllegalArgumentException(msg);
+			String tagName, @SuppressWarnings("rawtypes") List nodes) {
+		if (Validate.isNullOrEmpty(nodes)) {
+			AlbianLoggerService.error("the %1$s node is empty.", tagName);
+			throw new IllegalArgumentException("node is null.");
 		}
 		Map<String, IAlbianServiceAttribute> map = new LinkedHashMap<String, IAlbianServiceAttribute>(
 				nodes.size());
-		for (Object node : nodes)
-		{
+		String name = null;
+		for (Object node : nodes) {
 			Element elt = XmlParser.toElement(node);
-			IAlbianServiceAttribute serviceAttr = parserService(elt);
-			if (null == serviceAttr) { throw new NullPointerException(
-					"parser service node is error."); }
-			map.put(serviceAttr.getId(), serviceAttr);
+			name = null == name ? "tagName" : name;
+			IAlbianServiceAttribute serviceAttr = parserService(name, elt);
+			if (null == serviceAttr) {
+				AlbianLoggerService.error("parser the node next id:%1$s is fail.", name);
+				throw new NullPointerException("parser service node is error.");
+			}
+			name = serviceAttr.getId();
+			map.put(name, serviceAttr);
 		}
 		return 0 == map.size() ? null : map;
 	}
 
 	@Override
-	protected IAlbianServiceAttribute parserService(Element elt)
-	{
-		if (null == elt)
-		{
+	protected IAlbianServiceAttribute parserService(String name, Element elt) {
+		if (null == elt) {
 			String msg = "The node is null";
-			AlbianLoggerService.error(msg);
+			AlbianLoggerService.error("parser the node next id:%1$s is fail.", name);
 			throw new IllegalArgumentException(msg);
 		}
 		IAlbianServiceAttribute serviceAttr = new AlbianServiceAttribute();
 		String id = XmlParser.getAttributeValue(elt, ID_ATTRBUITE_NAME);
-		if (Validate.isNullOrEmptyOrAllSpace(id))
-		{
-			AlbianLoggerService.error("The id is null or empty.");
+		if (Validate.isNullOrEmptyOrAllSpace(id)) {
+			AlbianLoggerService.error("parser the node is fail.the node is is null or empty,the node next id:%1$s.", name);
 			return null;
 		}
 		serviceAttr.setId(id);
 		String type = XmlParser.getAttributeValue(elt, TYPE_ATTRBUITE_NAME);
-		if (Validate.isNullOrEmptyOrAllSpace(type))
-		{
+		if (Validate.isNullOrEmptyOrAllSpace(type)) {
 			AlbianLoggerService.error("The", serviceAttr.getId(),
 					"Type is null or empty.");
 			return null;

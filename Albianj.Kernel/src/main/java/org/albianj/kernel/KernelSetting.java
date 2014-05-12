@@ -8,6 +8,7 @@ public class KernelSetting
 	private static int threadPoolCoreSize = 5;
 	private static int threadPoolMaxSize = 20;
 	private static AlbianLevel level = AlbianLevel.Release;
+	private static AlbianStartupMode mode = AlbianStartupMode.Normal;
 
 	public static String getKernelId()
 	{
@@ -63,5 +64,13 @@ public class KernelSetting
 	}
 	public static AlbianLevel getAlbianLevel(){
 		return KernelSetting.level;
+	}
+	
+	public static void setAlbianStartupMode(AlbianStartupMode m){
+		mode = m;
+	}
+	
+	public static AlbianStartupMode getAlbianStartupMode(){
+		return mode;
 	}
 }

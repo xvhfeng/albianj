@@ -22,19 +22,15 @@ import org.albianj.text.StringHelper;
  * �������� �������� JDK Document http://.../docs/technotes/guides/security/SunProviders.html
  * </pre>
  */
-public abstract class DESCoder extends Coder
-{
+public abstract class DESCoder extends Coder {
 
 	private static final String DEFAULT_DES_KEY = "!$^*%&^&*FSDFOIRMNSknfesjfghu!!";
 
-
-	public static String decrypt(String message) throws Exception
-	{
-		return decrypt(DEFAULT_DES_KEY,message);
+	public static String decrypt(String message) throws Exception {
+		return decrypt(DEFAULT_DES_KEY, message);
 	}
-	
-	public static String decrypt(String key,String message) throws Exception
-	{
+
+	public static String decrypt(String key, String message) throws Exception {
 		String k = StringHelper.padLeft(key, 8);
 		byte[] bytesrc = Coder.decryptBASE64(message);
 		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
@@ -48,14 +44,12 @@ public abstract class DESCoder extends Coder
 		byte[] retByte = cipher.doFinal(bytesrc);
 		return new String(retByte);
 	}
-	
-	public static String encrypt(String message) throws Exception
-	{
-		return encrypt(DEFAULT_DES_KEY,message);
+
+	public static String encrypt(String message) throws Exception {
+		return encrypt(DEFAULT_DES_KEY, message);
 	}
 
-	public static String encrypt(String key,String message) throws Exception
-	{
+	public static String encrypt(String key, String message) throws Exception {
 		String k = StringHelper.padLeft(key, 8);
 		Cipher cipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
 		DESKeySpec desKeySpec = new DESKeySpec(k.getBytes("UTF-8"));

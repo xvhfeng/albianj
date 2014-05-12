@@ -110,8 +110,11 @@ public class LocalCache implements ILocalCached {
 		ageList = new LinkedList();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.albianj.expiredcached.impl.ICache#put(java.lang.Object, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.albianj.expiredcached.impl.ICache#put(java.lang.Object,
+	 * java.lang.Object)
 	 */
 	@SuppressWarnings("unchecked")
 	public synchronized Object put(Object key, Object value) {
@@ -149,12 +152,15 @@ public class LocalCache implements ILocalCached {
 
 		return value;
 	}
-	
-	/* (non-Javadoc)
-	 * @see org.albianj.expiredcached.impl.ICache#put(java.lang.Object, java.lang.Object, long)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.albianj.expiredcached.impl.ICache#put(java.lang.Object,
+	 * java.lang.Object, long)
 	 */
 	@SuppressWarnings("unchecked")
-	public synchronized Object put(Object key, Object value,long timespan) {
+	public synchronized Object put(Object key, Object value, long timespan) {
 		// Delete an old entry if it exists.
 		remove(key);
 
@@ -179,10 +185,12 @@ public class LocalCache implements ILocalCached {
 		// We make an explicit call to currentTimeMillis() so that total
 		// accuracy
 		// of lifetime calculations is better than one second.
-//		if(timespan < this.maxLifetime)
-//			ageNode.timestamp = System.currentTimeMillis() + this.maxLifetime - timespan;
-//		else
-//			ageNode.timestamp = System.currentTimeMillis() - (timespan - this.maxLifetime);
+		// if(timespan < this.maxLifetime)
+		// ageNode.timestamp = System.currentTimeMillis() + this.maxLifetime -
+		// timespan;
+		// else
+		// ageNode.timestamp = System.currentTimeMillis() - (timespan -
+		// this.maxLifetime);
 		ageNode.creationTimes = System.currentTimeMillis();
 		ageNode.timestamp = timespan;
 		cacheObject.ageListNode = ageNode;
@@ -194,8 +202,9 @@ public class LocalCache implements ILocalCached {
 		return value;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#get(java.lang.Object)
 	 */
 	public synchronized Object get(Object key) {
@@ -223,7 +232,9 @@ public class LocalCache implements ILocalCached {
 		return cacheObject.object;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#remove(java.lang.Object)
 	 */
 	public synchronized Object remove(Object key) {
@@ -245,7 +256,9 @@ public class LocalCache implements ILocalCached {
 		return cacheObject.object;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#clear()
 	 */
 	public synchronized void clear() {
@@ -266,7 +279,9 @@ public class LocalCache implements ILocalCached {
 		cacheMisses = 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#size()
 	 */
 	public int size() {
@@ -277,7 +292,9 @@ public class LocalCache implements ILocalCached {
 		return map.size();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#isEmpty()
 	 */
 	public boolean isEmpty() {
@@ -288,7 +305,9 @@ public class LocalCache implements ILocalCached {
 		return map.isEmpty();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#values()
 	 */
 	@SuppressWarnings("rawtypes")
@@ -305,7 +324,9 @@ public class LocalCache implements ILocalCached {
 		return Collections.unmodifiableList(Arrays.asList(values));
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#containsKey(java.lang.Object)
 	 */
 	public boolean containsKey(Object key) {
@@ -316,7 +337,9 @@ public class LocalCache implements ILocalCached {
 		return map.containsKey(key);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#putAll(java.util.Map)
 	 */
 	@SuppressWarnings("rawtypes")
@@ -328,8 +351,11 @@ public class LocalCache implements ILocalCached {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.albianj.expiredcached.impl.ICache#containsValue(java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.albianj.expiredcached.impl.ICache#containsValue(java.lang.Object)
 	 */
 	public boolean containsValue(Object value) {
 		// First, clear all entries that have been in cache longer than the
@@ -341,12 +367,12 @@ public class LocalCache implements ILocalCached {
 		return map.containsValue(cacheObject);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#entrySet()
 	 */
-	@SuppressWarnings({
-			"rawtypes", "unchecked"
-	})
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Set entrySet() {
 		// First, clear all entries that have been in cache longer than the
 		// maximum defined age.
@@ -355,12 +381,12 @@ public class LocalCache implements ILocalCached {
 		return Collections.unmodifiableSet(map.entrySet());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#keySet()
 	 */
-	@SuppressWarnings({
-			"rawtypes", "unchecked"
-	})
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Set keySet() {
 		// First, clear all entries that have been in cache longer than the
 		// maximum defined age.
@@ -369,42 +395,54 @@ public class LocalCache implements ILocalCached {
 		return Collections.unmodifiableSet(map.keySet());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#getName()
 	 */
 	public String getName() {
 		return name;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#getCacheHits()
 	 */
 	public long getCacheHits() {
 		return cacheHits;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#getCacheMisses()
 	 */
 	public long getCacheMisses() {
 		return cacheMisses;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#getCacheSize()
 	 */
 	public int getCacheSize() {
 		return cacheSize;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#getMaxCacheSize()
 	 */
 	public int getMaxCacheSize() {
 		return maxCacheSize;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#setMaxCacheSize(int)
 	 */
 	public void setMaxCacheSize(int maxCacheSize) {
@@ -414,14 +452,18 @@ public class LocalCache implements ILocalCached {
 		cullCache();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#getDefaultLifetime()
 	 */
 	public long getDefaultLifetime() {
 		return defaultLifetime;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.albianj.expiredcached.impl.ICache#setDefaultLifetime(long)
 	 */
 	public void setDefaultLifetime(long defaultLifetime) {
@@ -490,7 +532,7 @@ public class LocalCache implements ILocalCached {
 		// Determine the expireTime, which is the moment in time that elements
 		// should expire from cache. Then, we can do an easy to check to see
 		// if the expire time is greater than the expire time.
-//		long expireTime = System.currentTimeMillis() - maxLifetime;
+		// long expireTime = System.currentTimeMillis() - maxLifetime;
 
 		while (node.timestamp < System.currentTimeMillis() - node.creationTimes) {
 			// Remove the object

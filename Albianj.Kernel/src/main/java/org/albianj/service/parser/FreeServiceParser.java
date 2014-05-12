@@ -47,7 +47,7 @@ public abstract class FreeServiceParser extends FreeAlbianService implements
 			AlbianLoggerService.error(msg);
 			throw new NullPointerException(msg);
 		}
-		Map<String, IAlbianServiceAttribute> map = parserServices(nodes);
+		Map<String, IAlbianServiceAttribute> map = parserServices(tagName,nodes);
 		if (null == map)
 		{
 			AlbianLoggerService.error("The albian services is empty.");
@@ -57,10 +57,10 @@ public abstract class FreeServiceParser extends FreeAlbianService implements
 		return;
 	}
 
-	protected abstract Map<String, IAlbianServiceAttribute> parserServices(
+	protected abstract Map<String, IAlbianServiceAttribute> parserServices(String tarName,
 			@SuppressWarnings("rawtypes") List nodes)
 			throws NullPointerException, AlbianServiceException;
 
-	protected abstract IAlbianServiceAttribute parserService(Element node)
+	protected abstract IAlbianServiceAttribute parserService(String name,Element node)
 			throws NullPointerException, AlbianServiceException;
 }

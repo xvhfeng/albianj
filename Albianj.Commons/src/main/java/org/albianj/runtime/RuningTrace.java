@@ -1,10 +1,8 @@
 package org.albianj.runtime;
 
-public class RuningTrace
-{
+public class RuningTrace {
 
-	public static IStackTrace getTraceInfo()
-	{
+	public static IStackTrace getTraceInfo() {
 		StackTraceElement[] stacks = new Throwable().getStackTrace();
 		int stacksLen = stacks.length;
 		IStackTrace trace = new StackTrace();
@@ -15,9 +13,8 @@ public class RuningTrace
 		return trace;
 	}
 
-	public static IStackTrace getTraceInfo(Exception e)
-	{
-		
+	public static IStackTrace getTraceInfo(Exception e) {
+
 		StackTraceElement[] stacks = e.getStackTrace();
 		IStackTrace trace = new StackTrace();
 		trace.setFileName(stacks[0].getFileName());
@@ -26,9 +23,8 @@ public class RuningTrace
 		trace.setLineNumber(stacks[0].getLineNumber());
 		return trace;
 	}
-	
-	public static IStackTrace getThreadTraceInfo()
-	{
+
+	public static IStackTrace getThreadTraceInfo() {
 		StackTraceElement[] stacks = Thread.currentThread().getStackTrace();
 		int stacksLen = stacks.length;
 		IStackTrace trace = new StackTrace();

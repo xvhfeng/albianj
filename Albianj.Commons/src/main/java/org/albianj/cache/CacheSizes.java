@@ -125,7 +125,8 @@ public class CacheSizes {
 	 *            the Collection object to determine the size of.
 	 * @return the size of the Collection object.
 	 */
-	public static int sizeOfCollection(@SuppressWarnings("rawtypes") Collection list) {
+	public static int sizeOfCollection(
+			@SuppressWarnings("rawtypes") Collection list) {
 		if (list == null) {
 			return 0;
 		}

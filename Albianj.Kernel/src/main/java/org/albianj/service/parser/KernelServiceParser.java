@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import org.albianj.io.Path;
 import org.albianj.kernel.AlbianLevel;
+import org.albianj.kernel.AlbianStartupMode;
 import org.albianj.kernel.KernelSetting;
 import org.albianj.logger.AlbianLoggerService;
 import org.albianj.service.FreeAlbianService;
@@ -49,13 +50,21 @@ public class KernelServiceParser extends FreeAlbianService implements
 		} else {
 			KernelSetting.setThreadPoolMaxSize(new Integer(maxSize));
 		}
+		
 		String sLevel = PropertiesParser.getValue(props, "Level");
-
 		if (Validate.isNullOrEmptyOrAllSpace(sLevel)
 				|| sLevel.equalsIgnoreCase("debug")) {
 			KernelSetting.setAlbianLevel(AlbianLevel.Debug);
 		} else {
 			KernelSetting.setAlbianLevel(AlbianLevel.Release);
+		}
+		
+		String sMode = PropertiesParser.getValue(props, "StartupMode");
+		if(Validate.isNullOrEmptyOrAllSpace(sMode)
+				|| sMode.equalsIgnoreCase("normal")){
+			KernelSetting.setAlbianStartupMode(AlbianStartupMode.Normal);
+		} else {
+			KernelSetting.setAlbianStartupMode(AlbianStartupMode.Async);
 		}
 	}
 

@@ -75,10 +75,10 @@ public class StringHelper {
 	}
 
 	public static String padLeft(String s, int length) {
-		if(null == s) {
+		if (null == s) {
 			return null;
 		}
-		if(s.length() > length){
+		if (s.length() > length) {
 			return s.substring(0, length);
 		}
 		byte[] bs = new byte[length];
@@ -89,7 +89,7 @@ public class StringHelper {
 	}
 
 	public static String censoredZero(String s) {
-		if(Validate.isNullOrEmptyOrAllSpace(s)){
+		if (Validate.isNullOrEmptyOrAllSpace(s)) {
 			return null;
 		}
 		int idx = s.lastIndexOf("0");

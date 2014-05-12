@@ -2,6 +2,7 @@ package org.albianj.kernel;
 
 import org.albianj.logger.AlbianLoggerService;
 import org.albianj.service.IAlbianService;
+import org.albianj.verify.Validate;
 
 /**
  * 获取albianj控制的service。
@@ -22,7 +23,7 @@ public class AlbianServiceRouter
 	 */
 	public static <T extends IAlbianService> T getService(Class<T> cla,String id,boolean isThrowIfException) throws IllegalArgumentException
 	{
-		if(null == id || id.isEmpty())
+		if(Validate.isNullOrEmptyOrAllSpace(id))
 			throw new IllegalArgumentException("id");
 		try
 		{
@@ -32,7 +33,7 @@ public class AlbianServiceRouter
 		}
 		catch(IllegalArgumentException exc)
 		{
-				AlbianLoggerService.error(exc,"Get service is error.");
+				AlbianLoggerService.error(exc,"Get service:%1$s is error.",id);
 			if(isThrowIfException)
 				throw exc;
 		}

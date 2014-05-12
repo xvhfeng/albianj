@@ -4,8 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public interface ILocalCached
-{
+public interface ILocalCached {
 
 	public Object put(Object key, Object value);
 
