@@ -1,0 +1,41 @@
+package org.albianj.persistence.object.impl;
+
+import org.albianj.persistence.object.IAlbianObject;
+
+public abstract class FreeAlbianObject implements IAlbianObject
+{
+	private static final long serialVersionUID = 1608573290358087720L;
+ 
+	private String id = "";
+	private boolean isAlbianNew = true;
+	
+	@Override
+	public String getId()
+	{
+		return this.id;
+	}
+
+	@Override
+	public void setId(String id)
+	{
+		this.id = id;
+	}
+
+	/**
+	 * albianj kernnel方法，在不重新实现albianj机制的情况下不要去操作
+	 */
+	@Override
+	public boolean getIsAlbianNew()
+	{
+		return this.isAlbianNew;
+	}
+
+	/**
+	 * albianj kernnel方法，在不重新实现albianj机制的情况下不要去操作
+	 */
+	@Override
+	public void setIsAlbianNew(boolean isAlbianNew)
+	{
+		this.isAlbianNew = isAlbianNew;
+	}
+}
