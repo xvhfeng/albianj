@@ -212,6 +212,7 @@ persistence.xml
 Members：
 	数据对象类的属性集合，如果全部使用默认，这部分可以为空；
 	Member 数据项，每个数据项都有以下几项功能提供；
+	
 		Name：
 			数据项在程序中的名称，一般为属性名称；
 		FieldName：
