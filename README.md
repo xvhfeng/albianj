@@ -24,13 +24,16 @@ Albianj使用手册
 	9：加密。因为数据库连接的需要，加入了DEC加密算法，请各位在使用Albianj时自行更改DEC的加密key；Albianj不仅仅只提供DEC对称加密，还集成了MD5，SHA等等加密算法；
 	10：密码生成器。Albianj自带了一个密码生成器，主要为了解决数据库用户名和密码的安全问题；
 	11：id解析器，分析生成的Id的业务信息，便于数据路由；使用方法（目前版本为单机或者说非分布式版本）：
+	
+	
+	
 	首先需要确保在站点的根目录下有config文件夹，在文件夹中有以下几个配置文件：
-	kernel.properties：Albianj引擎内核的配置；
-	log4j.xml：Albianj集成日志主键的配置；
-	service.xml：各种service的配置，Albianj的超轻量级的IoC；
-	storage.xml：数据库连接的配置；
-	peristence.xml：持久化对象的配置；
-	routing.xml：持久化对象对于存储数据库的数据路由；
+		kernel.properties：Albianj引擎内核的配置；
+		log4j.xml：Albianj集成日志主键的配置；
+		service.xml：各种service的配置，Albianj的超轻量级的IoC；
+		storage.xml：数据库连接的配置；
+		peristence.xml：持久化对象的配置；
+		routing.xml：持久化对象对于存储数据库的数据路由；
 
 	
 kernel.properties
@@ -293,7 +296,7 @@ routing.xml
 		</ReaderRoutings>
 	</AlbianObject>
 </AlbianObjects>
-
+	
 每个AlbianObject即一个数据对象。AlbianObjects支持多AlbianObject配置。
 	Type：
 		数据对象类，必须实现IAlbianObject，其实就是persistence.xml中AlbianObject配置中的Type；
