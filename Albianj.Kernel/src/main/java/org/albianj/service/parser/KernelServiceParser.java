@@ -31,7 +31,7 @@ public class KernelServiceParser extends FreeAlbianService implements
 		if (Validate.isNullOrEmptyOrAllSpace(id))
 			throw new RuntimeException("the kernel is is null pr empty.");
 		KernelSetting.setKernelId(id);
-		KernelSetting.setKernelKey(PropertiesParser.getValue(props, "Key"));
+//		KernelSetting.setKernelKey(PropertiesParser.getValue(props, "Key"));
 		String appName = PropertiesParser.getValue(props, "AppName");
 		if (Validate.isNullOrEmptyOrAllSpace(appName))
 			throw new RuntimeException("The appName is null or empty.");

@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.albianj.service.parser.PropertiesParser"/>
+<fullyQualifiedTypeName name="org.albianj.kernel.AlbianStartupMode"/>
+<fullyQualifiedTypeName name="org.albianj.kernel.KernelSetting"/>
+<fullyQualifiedTypeName name="org.albianj.verify.Validate"/>
+<fullyQualifiedTypeName name="org.albianj.logger.AlbianLoggerService"/>
+</qualifiedTypeNameHistroy>

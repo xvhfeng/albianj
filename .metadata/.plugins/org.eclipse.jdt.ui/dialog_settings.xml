@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="500" key="CallHierarchyViewPart.ratio3"/>
+	<item value="500" key="CallHierarchyViewPart.ratio1"/>
+	<item value="3" key="CallHierarchyViewPart.orientation"/>
+	<item value="1" key="SearchScopeActionGroup.search_scope_type"/>
+	<item value="2" key="CallHierarchyViewPart.field_mode"/>
+	<item value="0" key="CallHierarchyViewPart.call_mode"/>
+	<list key="SearchScopeActionGroup.working_set">
+	</list>
+	<section name="OptionalMessageDialog.hide.">
+		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
+	</section>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item value="true" key="group_libraries"/>
 		<item value="false" key="linkWithEditor"/>
@@ -20,6 +31,12 @@
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
+	<section name="SearchInDialog">
+		<item value="true" key="SearchInJRE"/>
+		<item value="true" key="SearchInProjects"/>
+		<item value="true" key="SearchInAppLibs"/>
+		<item value="true" key="SearchInSources"/>
+	</section>
 	<section name="ProblemSeveritiesConfigurationBlock">
 		<item value="false" key="expanded4"/>
 		<item value="false" key="expanded3"/>
@@ -29,5 +46,7 @@
 		<item value="false" key="expanded6"/>
 		<item value="false" key="expanded5"/>
 		<item value="true" key="expanded0"/>
+	</section>
+	<section name="CallHierarchySearchScope">
 	</section>
 </section>

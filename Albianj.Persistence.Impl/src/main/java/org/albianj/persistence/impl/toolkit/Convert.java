@@ -104,7 +104,7 @@ public class Convert
 		{
 			return Types.INTEGER;
 		}
-		else if("bigit".equalsIgnoreCase(typeName))
+		else if("bigint".equalsIgnoreCase(typeName))
 		{
 			return Types.BIGINT;
 		}
