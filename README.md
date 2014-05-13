@@ -226,8 +226,9 @@ Members：
 			字段是否保存到数据库，配置为true或者false；
 		DatabaseType：
 			字段在数据库中的类型，目前支持的数据类型为：
-			 DatabaseType	数据库类型
-			char	                       Types.CHAR
+			
+			 DatabaseType	            数据库类型
+			char	                Types.CHAR
 			varchar	               Types.VARCHAR
 			longvarchar	       Types.LONGVARCHAR
 			numeric	               Types.NUMERIC
