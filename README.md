@@ -4,7 +4,6 @@ albianj
 
 Albianj使用手册
 
-
 总述：
 
 	Albianj是一个一站式的开发框架解决方案。Albianj由java写成（其实他还有一个.net版本的）。目前因为项目的需要，Albianj还无法担负起一站式分布式系统开发框架的重任，但是只要花少许的功能更改和增加就可以实现。具体如下：
@@ -227,11 +226,49 @@ Members：
 			字段是否保存到数据库，配置为true或者false；
 		DatabaseType：
 			字段在数据库中的类型，目前支持的数据类型为：
-
+			 DatabaseType	数据库类型
+			char	                       Types.CHAR
+			varchar	               Types.VARCHAR
+			longvarchar	       Types.LONGVARCHAR
+			numeric	               Types.NUMERIC
+			decimal	               Types.DECIMAL
+			bit	                       Types.BIT
+			tinyint	               Types.TINYINT
+			smallint	               Types.SMALLINT
+			integer	               Types.INTEGER
+			bigint	               Types.BIGINT
+			real	                       Types.REAL
+			float	                       Types.FLOAT
+			double	               Types.DOUBLE
+			binary	               Types.BINARY
+			varbinary	               Types.VARBINARY
+			longvarbinary	       Types.LONGVARBINARY
+			date	                       Types.DATE
+			time	                       Types.TIME
+			timestamp	       Types.TIMESTAMP
+			clob	                       Types.CLOB
+			blob	                       Types.BLOB
+			array	               Types.ARRAY
+			以上都不是	       Types.VARCHAR
 						
 	默认为字段类型通过转换成的类型，如果转换找不到类型，即为varchar。如果你配置了DatabaseType，并且配置值不在Albianj支持的行列，默认也为varcahr。
 	默认类型转换如下：
-
+		属性类型	              数据库类型
+		String	              Types.VARCHAR
+		BigDecimal	      Types.NUMERIC
+		boolean	              Types.BIT
+		integer	              Types.INTEGER
+		long	                      Types.BIGINT
+		float	                      Types.FLOAT
+		double	              Types.DOUBLE
+		date	                      Types.DATE
+		time	                      Types.TIME
+		timestamp	      Types.TIMESTAMP
+		clob	                      Types.CLOB
+		blob	                      Types.BLOB
+		array	              Types.ARRAY
+		以上都不是	      Types.VARCHAR
+	
 
 routing.xml
 
@@ -307,20 +344,3 @@ routing.xml
 				e.printStackTrace();
 			}
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-the orm with date router by java
