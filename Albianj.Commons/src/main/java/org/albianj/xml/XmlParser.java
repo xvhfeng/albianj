@@ -19,7 +19,8 @@ public final class XmlParser {
 		}
 		try {
 			SAXReader reader = new SAXReader();
-			Document doc = reader.read(new File(path));
+			Document doc = reader.read(path);
+			//Document doc = reader.read(new File(path));
 			return doc;
 		} catch (DocumentException e) {
 			throw e;

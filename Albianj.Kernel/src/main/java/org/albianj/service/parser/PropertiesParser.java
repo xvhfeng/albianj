@@ -2,15 +2,28 @@ package org.albianj.service.parser;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URL;
 import java.util.Properties;
+
+import org.albianj.kernel.KernelSetting;
 
 public class PropertiesParser
 {
 	public static Properties load(String filePath) throws Exception
 	{
 		Properties props;
-		File file = new File(filePath);
-		FileInputStream inStream = new FileInputStream(file);
+		File file = null;
+		InputStream inStream = null;
+		if(KernelSetting.getAlbianConfigFilePath().startsWith("http://")){
+			URL url = new URL(filePath);
+			inStream = url.openStream();
+		}else {
+			file = new File(filePath);
+			inStream = new FileInputStream(file);
+		}
+		
 		try
 		{
 			props = new Properties();
@@ -23,7 +36,9 @@ public class PropertiesParser
 		}
 		finally
 		{
-			inStream.close();
+			if(null != inStream){
+				inStream.close();	
+			}
 		}
 	}
 

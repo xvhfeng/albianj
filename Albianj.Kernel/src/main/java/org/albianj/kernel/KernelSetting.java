@@ -1,5 +1,7 @@
 package org.albianj.kernel;
 
+import org.albianj.verify.Validate;
+
 public class KernelSetting
 {
 	private static String kernelId = null;
@@ -9,6 +11,7 @@ public class KernelSetting
 	private static int threadPoolMaxSize = 20;
 	private static AlbianLevel level = AlbianLevel.Release;
 	private static AlbianStartupMode mode = AlbianStartupMode.Normal;
+	private static String fpath = "../config/";
 
 	public static String getKernelId()
 	{
@@ -72,5 +75,19 @@ public class KernelSetting
 	
 	public static AlbianStartupMode getAlbianStartupMode(){
 		return mode;
+	}
+	
+	public static void setAlbianConfigFilePath(String fpath){
+		if(!Validate.isNullOrEmptyOrAllSpace(fpath)){
+			if(fpath.endsWith("/")){
+				KernelSetting.fpath = fpath;
+			} else {
+				KernelSetting.fpath = fpath + "/";
+			}
+		}
+	}
+	
+	public static String getAlbianConfigFilePath(){
+		return fpath;
 	}
 }

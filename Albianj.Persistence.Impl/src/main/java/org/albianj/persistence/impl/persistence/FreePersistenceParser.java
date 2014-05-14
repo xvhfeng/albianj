@@ -3,6 +3,7 @@ package org.albianj.persistence.impl.persistence;
 import java.util.List;
 
 import org.albianj.io.Path;
+import org.albianj.kernel.KernelSetting;
 import org.albianj.logger.AlbianLoggerService;
 import org.albianj.persistence.object.IAlbianObjectAttribute;
 import org.albianj.service.FreeAlbianService;
@@ -15,7 +16,7 @@ import org.dom4j.Element;
 public abstract class FreePersistenceParser extends FreeAlbianService implements IParser
 {
 
-	private final static String path = "../config/persistence.xml";
+	private final static String file = "persistence.xml";
 	private final static String tagName = "AlbianObjects/AlbianObject";
 	
 	public void init()
@@ -23,7 +24,7 @@ public abstract class FreePersistenceParser extends FreeAlbianService implements
 		Document doc = null;
 		try
 		{
-			doc = XmlParser.load(Path.getExtendResourcePath(path));
+			doc = XmlParser.load(Path.getExtendResourcePath(KernelSetting.getAlbianConfigFilePath() + file));
 		}
 		catch(Exception e)
 		{

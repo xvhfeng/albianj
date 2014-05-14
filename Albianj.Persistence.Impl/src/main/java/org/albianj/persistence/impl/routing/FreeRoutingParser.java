@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.albianj.io.Path;
+import org.albianj.kernel.KernelSetting;
 import org.albianj.logger.AlbianLoggerService;
 import org.albianj.persistence.object.IRoutingAttribute;
 import org.albianj.service.FreeAlbianService;
@@ -27,7 +28,7 @@ import org.dom4j.Document;
 public abstract class FreeRoutingParser extends FreeAlbianService implements
 		IParser
 {
-	private final static String path = "../config/routing.xml";
+	private final static String file = "routing.xml";
 	private final static String tagName = "AlbianObjects/AlbianObject";
 
 	@Override
@@ -36,7 +37,7 @@ public abstract class FreeRoutingParser extends FreeAlbianService implements
 		Document doc = null;
 		try
 		{
-			doc = XmlParser.load(Path.getExtendResourcePath(path));
+			doc = XmlParser.load(Path.getExtendResourcePath(KernelSetting.getAlbianConfigFilePath() + file));
 		}
 		catch (Exception e)
 		{

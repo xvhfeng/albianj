@@ -12,12 +12,12 @@ import org.albianj.verify.Validate;
 
 public class KernelServiceParser extends FreeAlbianService implements
 		IServiceParser {
-	private final static String path = "../config/kernel.properties";
+	private final static String file = "kernel.properties";
 
 	public void init() {
 		try {
 			Properties props = PropertiesParser.load(Path
-					.getExtendResourcePath(path));
+					.getExtendResourcePath(KernelSetting.getAlbianConfigFilePath() + file));
 			parser(props);
 		} catch (Exception e) {
 			AlbianLoggerService.error(e,

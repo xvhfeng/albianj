@@ -38,6 +38,11 @@ public final class AlbianBootService {
 	public static AlbianState getLifeState() {
 		return state;
 	}
+	
+	public static void start(String path) throws Exception{
+		KernelSetting.setAlbianConfigFilePath(path);
+		start();
+	}
 
 	/**
 	 * 启动albianj 此方法会读取你根目录下的config文件夹下的配置文件，根据service.xml文件中配置的service解析各个服务，

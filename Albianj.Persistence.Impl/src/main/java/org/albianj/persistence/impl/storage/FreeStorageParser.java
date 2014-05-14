@@ -3,6 +3,7 @@ package org.albianj.persistence.impl.storage;
 import java.util.List;
 
 import org.albianj.io.Path;
+import org.albianj.kernel.KernelSetting;
 import org.albianj.logger.AlbianLoggerService;
 import org.albianj.persistence.impl.cached.StorageAttributeMap;
 import org.albianj.persistence.object.DatabaseStyle;
@@ -17,7 +18,7 @@ import org.dom4j.Element;
 public abstract class FreeStorageParser extends FreeAlbianService implements
 		IParser
 {
-	private final static String path = "../config/storage.xml";
+	private final static String file = "storage.xml";
 	private final static String tagName = "Storages/Storage";
 
 	@Override
@@ -26,7 +27,7 @@ public abstract class FreeStorageParser extends FreeAlbianService implements
 		Document doc = null;
 		try
 		{
-			doc = XmlParser.load(Path.getExtendResourcePath(path));
+			doc = XmlParser.load(Path.getExtendResourcePath(KernelSetting.getAlbianConfigFilePath() + file));
 		}
 		catch(Exception e)
 		{

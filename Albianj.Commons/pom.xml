@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.albianj</groupId>
-	<version>1.0.1.20140512</version>
+	<version>1.0.2.20140514</version>
 	<name>org.albianj.commons</name>
 
 	<dependencies>
@@ -70,4 +70,20 @@
 
 	</dependencies>
 	<artifactId>org.albianj.commons</artifactId>
+	
+	<!-- jar部署仓库环境 -->
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>public</name>
+			<url>http://10.96.210.71:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>snapshots</name>
+			<url>http://10.96.210.71:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+	
 </project>

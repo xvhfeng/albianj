@@ -43,8 +43,13 @@ public final class Path {
 		}
 		String path = null;
 		if (!relativePath.contains("../")) {
-			resourceAbsoluteURL = getResource(cla, relativePath);
-		} else {
+			if (relativePath.startsWith("http://")) { //远程文件
+				return relativePath;
+			} else {//资源文件
+				resourceAbsoluteURL = getResource(cla, relativePath);
+				path = resourceAbsoluteURL.toURI().getPath();
+			}
+		} else {//相对路径
 			String classPathAbsolutePath = getAbsolutePathOfClassLoaderClassPath(cla);
 			if (relativePath.substring(0, 1).equals("/")) {
 				relativePath = relativePath.substring(1);
@@ -60,6 +65,7 @@ public final class Path {
 			resourceAbsoluteURL = new URL(resourceAbsolutePath);
 			path = resourceAbsoluteURL.toURI().getPath();
 		}
+		
 
 		if (isWindows && path.startsWith("/")) {
 			path = path.substring(1);

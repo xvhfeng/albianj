@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.albianj.io.Path;
+import org.albianj.kernel.KernelSetting;
 import org.albianj.logger.AlbianLoggerService;
 import org.albianj.service.AlbianServiceException;
 import org.albianj.service.FreeAlbianService;
@@ -17,7 +18,7 @@ public abstract class FreeServiceParser extends FreeAlbianService implements
 		IServiceParser
 {
 
-	private final static String path = "../config/service.xml";
+	private final static String file = "service.xml";
 	private final static String tagName = "Services/Service";
 
 	public final static String ALBIANJSERVICEKEY = "@$#&ALBIANJ_ALL_SERVICE&#$@";
@@ -28,7 +29,7 @@ public abstract class FreeServiceParser extends FreeAlbianService implements
 		Document doc = null;
 		try
 		{
-			doc = XmlParser.load(Path.getExtendResourcePath(path));
+			doc = XmlParser.load(Path.getExtendResourcePath(KernelSetting.getAlbianConfigFilePath() + file));
 		}
 		catch(Exception e)
 		{
