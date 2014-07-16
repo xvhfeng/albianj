@@ -2,7 +2,13 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.albianj.service.parser.PropertiesParser"/>
 <fullyQualifiedTypeName name="org.albianj.kernel.AlbianStartupMode"/>
-<fullyQualifiedTypeName name="org.albianj.kernel.KernelSetting"/>
-<fullyQualifiedTypeName name="org.albianj.verify.Validate"/>
 <fullyQualifiedTypeName name="org.albianj.logger.AlbianLoggerService"/>
+<fullyQualifiedTypeName name="org.albianj.verify.Validate"/>
+<fullyQualifiedTypeName name="org.albianj.kernel.AlbianBootService"/>
+<fullyQualifiedTypeName name="org.albianj.service.parser.KernelServiceParser"/>
+<fullyQualifiedTypeName name="org.albianj.kernel.KernelSetting"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="java.net.URI"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
 </qualifiedTypeNameHistroy>

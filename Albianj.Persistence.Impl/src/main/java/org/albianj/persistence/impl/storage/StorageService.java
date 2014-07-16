@@ -38,6 +38,7 @@ public class StorageService extends FreeStorageParser {
 	// <Timeout>60</Timeout>
 	// <Charset>gb2312</Charset>
 	// <Transactional>true</Transactional>
+	//<TransactionLevel>0</TransactinLevel>
 	// </Storage>
 
 	public void loading() {
@@ -104,6 +105,8 @@ public class StorageService extends FreeStorageParser {
 		String charset = XmlParser.getSingleChildNodeValue(node, "Charset");
 		String transactional = XmlParser.getSingleChildNodeValue(node,
 				"Transactional");
+		String transactionLevel = XmlParser.getSingleChildNodeValue(node,
+				"TransactionLevel");
 
 		IStorageAttribute storage = new StorageAttribute();
 		storage.setName(name);
@@ -133,6 +136,25 @@ public class StorageService extends FreeStorageParser {
 		storage.setTransactional(Validate
 				.isNullOrEmptyOrAllSpace(transactional) ? true : new Boolean(
 				transactional));
+		if(storage.getTransactional()){
+			if(Validate.isNullOrEmpty(transactionLevel)){
+				//default level and do not means no suppert tran
+				storage.setTransactionLevel(Connection.TRANSACTION_NONE);
+			} else {
+				if(transactionLevel.equalsIgnoreCase("READ_UNCOMMITTED")){
+					storage.setTransactionLevel(Connection.TRANSACTION_READ_UNCOMMITTED);
+				} else if(transactionLevel.equalsIgnoreCase("READ_COMMITTED")){
+					storage.setTransactionLevel(Connection.TRANSACTION_READ_COMMITTED);
+				}else if(transactionLevel.equalsIgnoreCase("REPEATABLE_READ")){
+					storage.setTransactionLevel(Connection.TRANSACTION_REPEATABLE_READ);
+				}else if(transactionLevel.equalsIgnoreCase("SERIALIZABLE")){
+					storage.setTransactionLevel(Connection.TRANSACTION_SERIALIZABLE);
+				}else{
+					//default level and do not means no suppert tran
+					storage.setTransactionLevel(Connection.TRANSACTION_NONE);
+				}
+			}
+		}
 
 		return storage;
 	}
@@ -161,7 +183,9 @@ public class StorageService extends FreeStorageParser {
 			
 			if (storageAttribute.getTransactional()) {
 				ds.setDefaultAutoCommit(false);
-				ds.setDefaultTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
+				if(Connection.TRANSACTION_NONE != storageAttribute.getTransactionLevel()) {
+					ds.setDefaultTransactionIsolation(storageAttribute.getTransactionLevel());
+				}
 			}
 			ds.setDefaultReadOnly(false);
 			if (storageAttribute.getPooling()) {

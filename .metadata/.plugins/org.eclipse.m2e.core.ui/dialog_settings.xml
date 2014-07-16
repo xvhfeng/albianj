@@ -43,10 +43,13 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="groupId">
+			<item value="org.abianj"/>
 		</list>
 		<list key="package">
+			<item value="org.albianj.exppame"/>
 		</list>
 		<list key="artifactId">
+			<item value="Albianj.Explame"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -56,27 +59,16 @@
 			<item value="[groupId].[artifactId]-[version]"/>
 		</list>
 		<list key="version">
+			<item value="1.0.1-20140514"/>
 			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="org.albianj"/>
 		</list>
 		<list key="name">
-			<item value="Albianj.ConnectionBuilder"/>
-			<item value="Albianj.Persistence.Impl"/>
-			<item value="Albianj.Persistence"/>
-			<item value="org.albianj.kernel"/>
-			<item value="org.albianj.commons"/>
 		</list>
 		<list key="artifactId">
-			<item value="Albianj.ConnectionBuilder"/>
-			<item value="Albianj.Persistence.Impl"/>
-			<item value="Albianj.Persistence"/>
-			<item value="kernel"/>
-			<item value="org.albianj.kernel"/>
-			<item value="commons"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -87,7 +79,6 @@
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>
-			<item value="1.0.0.20140512"/>
 		</list>
 	</section>
 </section>

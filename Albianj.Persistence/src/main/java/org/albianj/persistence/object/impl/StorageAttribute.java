@@ -18,6 +18,7 @@ public class StorageAttribute implements IStorageAttribute
 	private String charset = null;
 	private boolean transactional = true;
 	private String server = null;
+	private int transactionLevel = 0;
 	
 	public String getName()
 	{
@@ -160,4 +161,12 @@ public class StorageAttribute implements IStorageAttribute
 	{
 		this.server = server;
 	}
+	
+	public int getTransactionLevel(){
+		return this.transactionLevel;
+	}
+	public void setTransactionLevel(int level){
+		this.transactionLevel = level;
+	}
+
 }

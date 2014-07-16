@@ -26,4 +26,6 @@ public interface IStorageAttribute
 	public void setCharset(String charset);
 	public boolean getTransactional();
 	public void setTransactional(boolean transactional);
+	public int getTransactionLevel();
+	public void setTransactionLevel(int level);
 }
