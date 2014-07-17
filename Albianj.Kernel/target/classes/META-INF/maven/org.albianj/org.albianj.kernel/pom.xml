@@ -4,7 +4,7 @@
 	<groupId>org.albianj</groupId>
 	<artifactId>org.albianj.kernel</artifactId>
   <name>org.albianj.kernel</name>
-  	<version>1.0.2.20140514</version>
+  	<version>1.0.3.20140717</version>
   
   <dependencies>
 		<dependency>

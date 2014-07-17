@@ -16,7 +16,8 @@ public class PropertiesParser
 		Properties props;
 		File file = null;
 		InputStream inStream = null;
-		if(KernelSetting.getAlbianConfigFilePath().startsWith("http://")){
+		if(KernelSetting.getAlbianConfigFilePath().startsWith("http://") ||
+				KernelSetting.getAlbianConfigFilePath().startsWith("https://")){
 			URL url = new URL(filePath);
 			inStream = url.openStream();
 		}else {

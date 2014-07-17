@@ -39,8 +39,25 @@ public final class AlbianBootService {
 		return state;
 	}
 	
-	public static void start(String path) throws Exception{
-		KernelSetting.setAlbianConfigFilePath(path);
+	/**
+	 * 启动Albianj，kernel使用默认的本地config文件夹下的配置，别的配置使用远程
+	 * @param path
+	 * @throws Exception
+	 */
+	public static void start(String configUrl) throws Exception{
+		KernelSetting.setAlbianConfigFilePath(configUrl);
+		start();
+	}
+	
+	/**
+	 * 启动Albianj，指定kernel的配置文件路径，指定别的配置文件的路径
+	 * @param kernelpath
+	 * @param configPath
+	 * @throws Exception
+	 */
+	public static void start(String kernelpath,String configPath) throws Exception {
+		KernelSetting.setAlbianConfigFilePath(configPath);
+		KernelSetting.setAlbianKernelConfigFilePath(kernelpath);
 		start();
 	}
 

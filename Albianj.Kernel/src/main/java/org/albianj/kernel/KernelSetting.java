@@ -12,6 +12,7 @@ public class KernelSetting
 	private static AlbianLevel level = AlbianLevel.Release;
 	private static AlbianStartupMode mode = AlbianStartupMode.Normal;
 	private static String fpath = "../config/";
+	private static String kernelpath = "../config/";
 
 	public static String getKernelId()
 	{
@@ -89,5 +90,19 @@ public class KernelSetting
 	
 	public static String getAlbianConfigFilePath(){
 		return fpath;
+	}
+	
+	public static void setAlbianKernelConfigFilePath(String fpath){
+		if(!Validate.isNullOrEmptyOrAllSpace(fpath)){
+			if(fpath.endsWith("/")){
+				KernelSetting.kernelpath = fpath;
+			} else {
+				KernelSetting.kernelpath = fpath + "/";
+			}
+		}
+	}
+	
+	public static String getAlbianKernelConfigFilePath(){
+		return kernelpath;
 	}
 }

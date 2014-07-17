@@ -17,7 +17,7 @@ public class KernelServiceParser extends FreeAlbianService implements
 	public void init() {
 		try {
 			Properties props = PropertiesParser.load(Path
-					.getExtendResourcePath(KernelSetting.getAlbianConfigFilePath() + file));
+					.getExtendResourcePath(KernelSetting.getAlbianKernelConfigFilePath() + file));
 			parser(props);
 		} catch (Exception e) {
 			AlbianLoggerService.error(e,
