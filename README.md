@@ -42,7 +42,10 @@ Albianj是一款为互联网企业量身定做的开发框架。它主要解决�
 ，还集成了MD5，SHA等等加密算法；  
 10：密码生成器。Albianj自带了一个密码生成器，主要为了解决数据库用户名和密码的
 安全问题；  
-11：id解析器，分析生成的Id的业务信息，便于数据路由；
+11：id解析器，分析生成的Id的业务信息，便于数据路由； 
+12： 新增了通过http或者https统一配置文件的功能，但是由于kernnel.config文件中含
+有在分布式模式下必须唯一的配置标识，故kernel.config必须单独存放在当前的Albianj
+实例宿主目录下；(2012-07-17新增)
 
 ##使用方法（目前版本为单机或者说非分布式版本）：
 
@@ -226,6 +229,14 @@ storage.xml的详细配置如下：
 ###Transactional：
 数据库引擎是否支持事务；  
 *注意：如果需要albianj支持分布式事务，这里的配置一定要是true；*
+###TransactionLevel:
+数据库引擎的事务级别，默认的设置为数据库的当前设置，该选项只有在Transactional
+为true的前提下才会有作用，该项取值为： 
+####READ_UNCOMMITTED
+####READ_COMMITTED
+####REPEATABLE_READ
+####SERIALIZABLE
+
 
 ##persistence.xml
 >albianj持久化数据对象配置文件
