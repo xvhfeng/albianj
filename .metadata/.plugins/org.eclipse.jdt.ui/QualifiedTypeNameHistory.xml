@@ -5,7 +5,6 @@
 <fullyQualifiedTypeName name="org.albianj.logger.AlbianLoggerService"/>
 <fullyQualifiedTypeName name="org.albianj.kernel.AlbianBootService"/>
 <fullyQualifiedTypeName name="org.albianj.service.parser.KernelServiceParser"/>
-<fullyQualifiedTypeName name="org.albianj.kernel.KernelSetting"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.net.URL"/>
 <fullyQualifiedTypeName name="java.net.URI"/>
@@ -13,4 +12,5 @@
 <fullyQualifiedTypeName name="org.albianj.verify.Validate"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="org.albianj.kernel.KernelSetting"/>
 </qualifiedTypeNameHistroy>

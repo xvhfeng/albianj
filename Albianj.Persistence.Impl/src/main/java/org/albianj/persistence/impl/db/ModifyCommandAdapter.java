@@ -10,13 +10,11 @@ import org.albianj.persistence.object.IRoutingAttribute;
 import org.albianj.persistence.object.IRoutingsAttribute;
 import org.albianj.verify.Validate;
 
-public class ModifyCommandAdapter implements IUpdateCommand
-{
+public class ModifyCommandAdapter implements IUpdateCommand {
 
 	public ICommand builder(IAlbianObject object, IRoutingsAttribute routings,
 			IAlbianObjectAttribute albianObject, Map<String, Object> mapValue,
-			IRoutingAttribute routing)
-	{
+			IRoutingAttribute routing) {
 
 		ICommand cmd = new Command();
 		StringBuilder text = new StringBuilder();
@@ -24,8 +22,7 @@ public class ModifyCommandAdapter implements IUpdateCommand
 		StringBuilder where = new StringBuilder();
 		text.append("UPDATE ");// .append(routing.getTableName());
 		String tableName = null;
-		if (null != routings && null != routings.getHashMapping())
-		{
+		if (null != routings && null != routings.getHashMapping()) {
 			tableName = routings.getHashMapping().mappingWriterTable(routing,
 					object);
 		}
@@ -37,34 +34,38 @@ public class ModifyCommandAdapter implements IUpdateCommand
 				.getMembers();
 		Map<String, ISqlParameter> sqlParas = new HashMap<String, ISqlParameter>();
 		for (Map.Entry<String, IMemberAttribute> entry : mapMemberAttributes
-				.entrySet())
-		{
+				.entrySet()) {
 			IMemberAttribute member = entry.getValue();
-			if (!member.getIsSave()) continue;
-			ISqlParameter para = new SqlParameter();
-			para.setName(member.getName());
-			para.setSqlFieldName(member.getSqlFieldName());
-			para.setSqlType(member.getDatabaseType());
-			para.setValue(mapValue.get(member.getName()));
-			sqlParas.put(String.format("#%1$s#", member.getSqlFieldName()),
-					para);
+			if (!member.getIsSave())
+				continue;
+			String name = member.getName();
+			Object newValue = mapValue.get(name);
 
-			if (member.getPrimaryKey())
-			{
+			if (member.getPrimaryKey()) {
 				where.append(" AND ").append(member.getSqlFieldName())
 						.append(" = ").append("#")
 						.append(member.getSqlFieldName()).append("# ");
-			}
-			else
+			} else { 
 			// cols
-			{
-				cols.append(member.getSqlFieldName()).append(" = ").append("#")
-						.append(member.getSqlFieldName()).append("# ,");
+				Object oldValue = object.getOldAlbianObject(name);
+				if((null == newValue && null == oldValue) 
+						|| newValue.equals(oldValue)){
+					continue;
+				}
+				cols.append(member.getSqlFieldName()).append(" = ")
+						.append("#").append(member.getSqlFieldName())
+						.append("# ,");
 			}
+			ISqlParameter para = new SqlParameter();
+			para.setName(name);
+			para.setSqlFieldName(member.getSqlFieldName());
+			para.setSqlType(member.getDatabaseType());
+			para.setValue(newValue);
+			sqlParas.put(String.format("#%1$s#", member.getSqlFieldName()),
+					para);
 		}
 
-		if (0 < cols.length())
-		{
+		if (0 < cols.length()) {
 			cols.deleteCharAt(cols.length() - 1);
 		}
 		text.append(" SET ").append(cols).append(" WHERE 1=1 ").append(where);

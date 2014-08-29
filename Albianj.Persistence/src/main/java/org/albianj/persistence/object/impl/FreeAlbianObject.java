@@ -1,5 +1,7 @@
 package org.albianj.persistence.object.impl;
 
+import java.util.HashMap;
+
 import org.albianj.persistence.object.IAlbianObject;
 
 public abstract class FreeAlbianObject implements IAlbianObject
@@ -8,6 +10,7 @@ public abstract class FreeAlbianObject implements IAlbianObject
  
 	private String id = "";
 	private boolean isAlbianNew = true;
+	protected transient HashMap<String,Object> dic = null;
 	
 	public String getId()
 	{
@@ -34,4 +37,20 @@ public abstract class FreeAlbianObject implements IAlbianObject
 	{
 		this.isAlbianNew = isAlbianNew;
 	}
+	
+	public void setOldAlbianObject(String key,Object v){
+		if(null == dic){
+			dic = new HashMap<String,Object>();
+		}
+		dic.put(key, v);
+	}
+	
+	public Object getOldAlbianObject(String key){
+		if(null == dic){
+			return null;
+		}
+		return dic.get(key);
+	}
+	
+	
 }
