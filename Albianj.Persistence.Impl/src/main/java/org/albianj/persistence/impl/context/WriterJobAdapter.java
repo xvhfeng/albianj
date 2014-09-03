@@ -46,6 +46,7 @@ public class WriterJobAdapter extends FreeWriterJobAdapter
 			ICommand cmd = update.builder(object, routings, albianObject,
 					mapValue, routing);
 
+			if(null == cmd) continue;//no the upload operator
 			if (Validate.isNull(writerJob.getWriterTasks()))
 			{
 				Map<String, IWriterTask> tasks = new LinkedHashMap<String, IWriterTask>();

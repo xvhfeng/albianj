@@ -65,6 +65,7 @@ public class ModifyCommandAdapter implements IUpdateCommand {
 					para);
 		}
 
+		if(0 == cols.length()) return null;//no the upload operator
 		if (0 < cols.length()) {
 			cols.deleteCharAt(cols.length() - 1);
 		}
